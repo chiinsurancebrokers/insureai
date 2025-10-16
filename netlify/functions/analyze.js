@@ -1,8 +1,6 @@
 // netlify/functions/analyze.js
 // Serverless function to handle AI analysis securely
 
-const fetch = require('node-fetch');
-
 exports.handler = async (event, context) => {
   // Set CORS headers
   const headers = {
@@ -33,7 +31,7 @@ exports.handler = async (event, context) => {
   try {
     // Parse request body
     const { prompt } = JSON.parse(event.body);
-
+    
     if (!prompt) {
       return {
         statusCode: 400,
@@ -54,7 +52,7 @@ exports.handler = async (event, context) => {
 
     console.log('Calling Anthropic API...');
 
-    // Call Anthropic API
+    // Call Anthropic API (fetch is built-in, no import needed!)
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -85,7 +83,6 @@ exports.handler = async (event, context) => {
     const data = await response.json();
     
     console.log('Analysis successful');
-
     return {
       statusCode: 200,
       headers,
