@@ -1,0 +1,8 @@
+{
+  "name": "insureai",
+  "version": "1.0.0",
+  "description": "AI-powered insurance coverage analyzer",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
